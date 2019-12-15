@@ -10,10 +10,11 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case GET_VIDEOS_PLAYBACK_RATE:
       sendResponse(getVideosPlaybackRate())
       return
-    case SET_VIDEO_PLAYBACK_RATE:
+    case SET_VIDEO_PLAYBACK_RATE: {
       const { idx, value } = request
       setVideoPlaybackRate(idx, value)
       return
+    }
   }
   throw new Error('Unhandled request: ' + JSON.stringify(request))
 })
