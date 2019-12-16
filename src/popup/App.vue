@@ -14,7 +14,7 @@
           :step="STEP"
           @change="
             value => {
-              setVideoPlaybackRate(idx, value);
+              setVideoPlaybackRate(idx, value)
             }
           "
         >
@@ -30,12 +30,12 @@
 import {
   GET_VIDEOS_PLAYBACK_RATE,
   SET_VIDEO_PLAYBACK_RATE
-} from "@/content-scripts/actions/videosPlaybackRate";
-import loadContentScript from "./utils/loadContentScript";
-import getCurrentTabId from "./utils/getCurrentTabId";
+} from '@/content-scripts/actions/videosPlaybackRate'
+import loadContentScript from './utils/loadContentScript'
+import getCurrentTabId from './utils/getCurrentTabId'
 
 export default {
-  name: "App",
+  name: 'App',
   data: () => ({
     MIN: 0.25,
     MAX: 5,
@@ -45,13 +45,13 @@ export default {
     playbackRates: [] /** number[] */
   }),
   async mounted() {
-    await loadContentScript();
+    await loadContentScript()
 
-    this.curTabId = await getCurrentTabId();
+    this.curTabId = await getCurrentTabId()
     const resp /** number[] */ = await browser.tabs.sendMessage(this.curTabId, {
       action: GET_VIDEOS_PLAYBACK_RATE
-    });
-    this.playbackRates = resp;
+    })
+    this.playbackRates = resp
   },
   methods: {
     /**
@@ -63,8 +63,8 @@ export default {
         action: SET_VIDEO_PLAYBACK_RATE,
         idx,
         value
-      });
+      })
     }
   }
-};
+}
 </script>
