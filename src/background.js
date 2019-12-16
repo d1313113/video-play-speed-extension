@@ -1,4 +1,7 @@
-// browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-//   console.log('browser.runtime.onMessage.addListener')
-//   console.log(request)
-// })
+export const loadContentScript = "loadContentScript";
+window[loadContentScript] = () => {
+  /** @return {Promise<any>} */
+  return browser.tabs.executeScript({
+    file: "js/content-script.js"
+  });
+};
