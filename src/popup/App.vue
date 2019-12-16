@@ -31,7 +31,6 @@ import {
   GET_VIDEOS_PLAYBACK_RATE,
   SET_VIDEO_PLAYBACK_RATE
 } from '@/content-scripts/actions/videosPlaybackRate'
-import loadContentScript from './utils/loadContentScript'
 import getCurrentTabId from './utils/getCurrentTabId'
 
 export default {
@@ -45,8 +44,6 @@ export default {
     playbackRates: [] /** number[] */
   }),
   async mounted() {
-    await loadContentScript()
-
     this.curTabId = await getCurrentTabId()
     const resp /** number[] */ = await browser.tabs.sendMessage(this.curTabId, {
       action: GET_VIDEOS_PLAYBACK_RATE
