@@ -1,6 +1,8 @@
 {
-  "extName": {
-    "message": "video-play-speed-extension",
-    "description": ""
+  "appName": {
+    "message": "Video Play Speed Controller"
+  },
+  "appDesc": {
+    "message": "Adjust video playback speed: slower or faster"
   }
 }

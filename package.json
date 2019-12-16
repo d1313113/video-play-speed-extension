@@ -2,6 +2,10 @@
   "name": "video-play-speed-extension",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pangu2020together/video-play-speed-extension.git"
+  },
   "scripts": {
     "serve": "vue-cli-service build --mode development --watch",
     "build": "vue-cli-service build",
