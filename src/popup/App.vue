@@ -59,6 +59,10 @@ export default {
      * @param {number} value
      */
     setVideoPlaybackRate(idx, value) {
+      browser.browserAction.setBadgeText({
+        tabId: this.curTabId,
+        text: value + 'x'
+      })
       browser.tabs.sendMessage(this.curTabId, {
         action: SET_VIDEO_PLAYBACK_RATE,
         idx,
