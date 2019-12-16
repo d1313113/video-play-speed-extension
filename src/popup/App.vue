@@ -37,7 +37,7 @@ export default {
   name: 'App',
   data: () => ({
     MIN: 0.25,
-    MAX: 5,
+    MAX: 10,
     STEP: 0.25,
 
     curTabId: null /** number */,
