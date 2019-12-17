@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { Button, Field, Slider } from 'buefy'
 import 'buefy/dist/buefy.css'
 import App from './App.vue'
-import { init } from './utils/googleAnalytics'
+import { init } from '../utils/GA'
 
 Vue.use(Button)
 Vue.use(Field)
