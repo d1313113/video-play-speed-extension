@@ -1,8 +1,9 @@
 import Vue from 'vue'
-import { Field, Slider } from 'buefy'
+import { Button, Field, Slider } from 'buefy'
 import 'buefy/dist/buefy.css'
 import App from './App.vue'
 
+Vue.use(Button)
 Vue.use(Field)
 Vue.use(Slider)
 

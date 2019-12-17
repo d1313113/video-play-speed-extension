@@ -1,5 +1,12 @@
 <template>
-  <section class="section">
+  <section class="section is-relative">
+    <b-button
+      type="is-white"
+      style="position: absolute; top: 0; right: 0"
+      @click="initPopup"
+    >
+      <img src="./assets/refresh.svg" />
+    </b-button>
     <div v-if="playbackRates.length" class="container">
       <b-field
         v-for="(playbackRate, idx) in playbackRates"
@@ -48,14 +55,18 @@ export default {
       init()
     }
   },
-  async mounted() {
-    const { id: tabId } = await getCurrentTab()
-    const resp /** number[] */ = await browser.tabs.sendMessage(tabId, {
-      action: GET_VIDEOS_PLAYBACK_RATE
-    })
-    this.playbackRates = resp
+  mounted() {
+    this.initPopup()
   },
   methods: {
+    async initPopup() {
+      const { id: tabId } = await getCurrentTab()
+      const resp /** number[] */ = await browser.tabs.sendMessage(tabId, {
+        action: GET_VIDEOS_PLAYBACK_RATE
+      })
+      this.playbackRates = resp
+      this.setBadgeText(tabId, resp[0])
+    },
     /**
      * @param {number} idx - index of document.querySelectorAll('video')
      * @param {number} value
@@ -64,14 +75,17 @@ export default {
       const { id: tabId, url } = await getCurrentTab()
       trackSpeed(value, url)
 
-      browser.browserAction.setBadgeText({
-        tabId,
-        text: value + 'x'
-      })
       browser.tabs.sendMessage(tabId, {
         action: SET_VIDEO_PLAYBACK_RATE,
         idx,
         value
+      })
+      this.setBadgeText(tabId, value)
+    },
+    setBadgeText(tabId, value) {
+      browser.browserAction.setBadgeText({
+        tabId,
+        text: value + 'x'
       })
     }
   }
