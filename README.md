@@ -49,3 +49,14 @@ $ npm run lint  # Lint + autofix
 
 * Tests
 * Introduce TypeScript or Flow
+
+## Security tips
+
+* Softwares (installation packages, extensions / plugins, etc) distributed by other Guo supporters, may not be safe
+* Even if it's open-source, the published content could be different (e.g. with malicious code)
+* Open source doesn't mean "safe and reliable" unless you can review each line of code and compile it yourself
+* As a developer, you'd better develop & debug the "works" from other Guo supporters in VPN + VM environment
+
+The above seems "self-denial" but I want nothing more than to arouse your security awareness. If you are not comfortable with this extension, you can find alternatives by searching "[video speed extension](https://www.google.com/search?q=video%20speed%20extension)".
+
+## ✊✊✊ Everything is just beginning 🙏🏻🙏🏻🙏🏻
