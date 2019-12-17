@@ -31,7 +31,8 @@ import {
   GET_VIDEOS_PLAYBACK_RATE,
   SET_VIDEO_PLAYBACK_RATE
 } from '@/content-scripts/actions/videosPlaybackRate'
-import getCurrentTabId from './utils/getCurrentTabId'
+import getCurrentTab from './utils/getCurrentTab'
+import { init, trackSpeed } from './utils/googleAnalytics'
 
 export default {
   name: 'App',
@@ -40,27 +41,34 @@ export default {
     MAX: 10,
     STEP: 0.25,
 
-    curTabId: null /** number */,
     playbackRates: [] /** number[] */
   }),
+  beforeCreate() {
+    if (process.env.NODE_ENV === 'production') {
+      init()
+    }
+  },
   async mounted() {
-    this.curTabId = await getCurrentTabId()
-    const resp /** number[] */ = await browser.tabs.sendMessage(this.curTabId, {
+    const { id: tabId } = await getCurrentTab()
+    const resp /** number[] */ = await browser.tabs.sendMessage(tabId, {
       action: GET_VIDEOS_PLAYBACK_RATE
     })
     this.playbackRates = resp
   },
   methods: {
     /**
-     * @param {number} idx
+     * @param {number} idx - index of document.querySelectorAll('video')
      * @param {number} value
      */
-    setVideoPlaybackRate(idx, value) {
+    async setVideoPlaybackRate(idx, value) {
+      const { id: tabId, url } = await getCurrentTab()
+      trackSpeed(value, url)
+
       browser.browserAction.setBadgeText({
-        tabId: this.curTabId,
+        tabId,
         text: value + 'x'
       })
-      browser.tabs.sendMessage(this.curTabId, {
+      browser.tabs.sendMessage(tabId, {
         action: SET_VIDEO_PLAYBACK_RATE,
         idx,
         value
