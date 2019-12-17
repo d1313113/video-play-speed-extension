@@ -39,7 +39,7 @@ import {
   SET_VIDEO_PLAYBACK_RATE
 } from '@/content-scripts/actions/videosPlaybackRate'
 import getCurrentTab from './utils/getCurrentTab'
-import { init, trackSpeed } from './utils/googleAnalytics'
+import { trackSpeed } from './utils/googleAnalytics'
 
 export default {
   name: 'App',
@@ -50,11 +50,6 @@ export default {
 
     playbackRates: [] /** number[] */
   }),
-  beforeCreate() {
-    if (process.env.NODE_ENV === 'production') {
-      init()
-    }
-  },
   mounted() {
     this.initPopup()
   },
