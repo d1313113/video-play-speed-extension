@@ -85,7 +85,7 @@ export default {
     setBadgeText(tabId, value) {
       browser.browserAction.setBadgeText({
         tabId,
-        text: value + 'x'
+        text: value ? value + 'x' : ''
       })
     }
   }
