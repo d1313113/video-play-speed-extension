@@ -18,6 +18,6 @@ export function init() {
  * @param {number} speed
  * @param {string} url
  */
-export function trackSpeed(speed, url) {
-  window._gaq.push(['_trackEvent', '' + speed, url])
+export function trackSpeed(speed /* , url */) {
+  window._gaq.push(['_trackEvent', 'speed', '' + speed])
 }
