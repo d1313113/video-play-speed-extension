@@ -1,4 +1,5 @@
 module.exports = {
+  productionSourceMap: false,
   pages: {
     popup: {
       template: 'public/browser-extension.html',
