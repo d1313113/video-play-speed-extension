@@ -2,7 +2,9 @@
 
 [👉 English README 👈](./README_en.md)
 
-> 本插件基于 [adambullmer/vue-cli-plugin-browser-extension](https://github.com/adambullmer/vue-cli-plugin-browser-extension) 开发。
+## 下载地址
+
+https://chrome.google.com/webstore/detail/video-play-speed-controll/oeeeoehjmbecilllolfoikdabhapgoac
 
 ## 初衷
 
@@ -23,6 +25,8 @@
 ![Vimeo](./screenshots/vimeo.png)
 
 ## 开发
+
+> 本插件基于 [adambullmer/vue-cli-plugin-browser-extension](https://github.com/adambullmer/vue-cli-plugin-browser-extension) 开发。
 
 ### 拉取代码
 
