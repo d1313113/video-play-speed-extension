@@ -2,7 +2,9 @@
 
 [👉 中文说明 👈](./README.md)
 
-> Powered by [adambullmer/vue-cli-plugin-browser-extension](https://github.com/adambullmer/vue-cli-plugin-browser-extension).
+## Download
+
+https://chrome.google.com/webstore/detail/video-play-speed-controll/oeeeoehjmbecilllolfoikdabhapgoac
 
 ## Purpose
 
@@ -23,6 +25,8 @@ Now we can only watch live videos of Miles Kwok (Guo Wengui) 😎 on Livestream 
 ![Vimeo](./screenshots/vimeo.png)
 
 ## For developers
+
+> Powered by [adambullmer/vue-cli-plugin-browser-extension](https://github.com/adambullmer/vue-cli-plugin-browser-extension).
 
 ### Pull the code
 
