@@ -44,9 +44,9 @@ import { trackSpeed } from './utils/googleAnalytics'
 export default {
   name: 'App',
   data: () => ({
-    MIN: 0.25,
+    MIN: 0.1,
     MAX: 10,
-    STEP: 0.25,
+    STEP: 0.05,
 
     playbackRates: [] /** number[] */
   }),
