@@ -1,5 +1,5 @@
-import { init } from './utils/GA'
+import { init } from './utils/GA';
 
 if (process.env.NODE_ENV === 'production') {
-  init()
+  init();
 }

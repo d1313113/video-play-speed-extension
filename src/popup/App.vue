@@ -21,7 +21,7 @@
           :step="STEP"
           @change="
             value => {
-              setVideoPlaybackRate(idx, value)
+              setVideoPlaybackRate(idx, value);
             }
           "
         >
@@ -37,9 +37,9 @@
 import {
   GET_VIDEOS_PLAYBACK_RATE,
   SET_VIDEO_PLAYBACK_RATE
-} from '@/content-scripts/actions/videosPlaybackRate'
-import getCurrentTab from './utils/getCurrentTab'
-import { trackSpeed } from './utils/googleAnalytics'
+} from '@/content-scripts/actions/videosPlaybackRate';
+import getCurrentTab from './utils/getCurrentTab';
+import { trackSpeed } from './utils/googleAnalytics';
 
 export default {
   name: 'App',
@@ -51,38 +51,38 @@ export default {
     playbackRates: [] /** number[] */
   }),
   mounted() {
-    this.initPopup()
+    this.initPopup();
   },
   methods: {
     async initPopup() {
-      const { id: tabId } = await getCurrentTab()
+      const { id: tabId } = await getCurrentTab();
       const resp /** number[] */ = await browser.tabs.sendMessage(tabId, {
         action: GET_VIDEOS_PLAYBACK_RATE
-      })
-      this.playbackRates = resp
-      this.setBadgeText(tabId, resp[0])
+      });
+      this.playbackRates = resp;
+      this.setBadgeText(tabId, resp[0]);
     },
     /**
      * @param {number} idx - index of document.querySelectorAll('video')
      * @param {number} value
      */
     async setVideoPlaybackRate(idx, value) {
-      const { id: tabId, url } = await getCurrentTab()
-      trackSpeed(value, url)
+      const { id: tabId, url } = await getCurrentTab();
+      trackSpeed(value, url);
 
       browser.tabs.sendMessage(tabId, {
         action: SET_VIDEO_PLAYBACK_RATE,
         idx,
         value
-      })
-      this.setBadgeText(tabId, value)
+      });
+      this.setBadgeText(tabId, value);
     },
     setBadgeText(tabId, value) {
       browser.browserAction.setBadgeText({
         tabId,
         text: value ? value + 'x' : ''
-      })
+      });
     }
   }
-}
+};
 </script>
